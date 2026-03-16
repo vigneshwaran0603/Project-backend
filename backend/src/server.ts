@@ -20,12 +20,12 @@ const init = async () => {
 
   const server = Hapi.server({
     port: 4000,
-    host: "localhost",
+    host: "0.0.0.0",
 
     routes: {
       cors: {
         origin: ["*"], // allow all origins (frontend access)
-        credentials: true,
+        credentials: false,
       },
     },
   });
