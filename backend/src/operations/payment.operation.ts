@@ -434,21 +434,21 @@ export const createStripePaymentOperation = async (
 ================================ */
 
 export const verifyStripePaymentOperation = async (
-  paymentIntentId: string
+  paymentId: string
 ) => {
 
-  const paymentIntent = await stripe.paymentIntents.retrieve(
-    paymentIntentId
-  );
+  // const paymentIntent = await stripe.paymentIntents.retrieve(
+  //   paymentIntentId
+  // );
 
-  if (paymentIntent.status !== "succeeded") {
-    return {
-      success: false,
-      message: "Payment not completed",
-    };
-  }
+  // if (paymentIntent.status !== "succeeded") {
+  //   return {
+  //     success: false,
+  //     message: "Payment not completed",
+  //   };
+  // }
 
-  const paymentId = paymentIntent.metadata.paymentId;
+  // const paymentId = paymentIntent.metadata.paymentId;
 
   const payment = await FeesPayment.findById(paymentId).populate("student");
 

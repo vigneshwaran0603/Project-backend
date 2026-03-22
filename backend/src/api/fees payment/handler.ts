@@ -174,20 +174,20 @@ export const verifyStripePaymentHandler = async (
   h: ResponseToolkit
 ) => {
 
-  const { paymentIntentId } = request.payload as {
-    paymentIntentId: string;
+  const { paymentId } = request.payload as {
+    paymentId: string;
   };
 
-  if (!paymentIntentId)
-    return h.response({
-      success: false,
-      message: "paymentIntentId required",
-    }).code(400);
+  // if (!paymentIntentId)
+  //   return h.response({
+  //     success: false,
+  //     message: "paymentIntentId required",
+  //   }).code(400);
 
   try {
 
     const result = await verifyStripePaymentOperation(
-      paymentIntentId
+      paymentId
     );
 
     return h.response(result).code(
